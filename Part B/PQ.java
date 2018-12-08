@@ -1,8 +1,3 @@
-
-/*
- * 
-PriorityQueue.java
- */
 import java.util.Comparator;
 
 public class PriorityQueue<T> {
@@ -38,14 +33,19 @@ public class PriorityQueue<T> {
      * param object The object to insert.
      */
     public void insert(T object) {
+		
+		
         // Ensure object is not null
         if (object == null) throw new IllegalArgumentException();
+		
         // Check available space
         if (size == heap.length - 1) throw new IllegalStateException();
+		
         // Place object at the next available position
         heap[++size] = object;
         // Let the newly added object swim
         swim(size);
+		
     }
     /**
      * Removes the object at the root of this heap.
@@ -104,34 +104,40 @@ public class PriorityQueue<T> {
         heap[i] = heap[j];
         heap[j] = tmp;
     }
+	
     public void print() {
         for (int i=1; i<=size; i++){
             System.out.print(heap[i]+ " ");
         }
         System.out.println();
     }
+	
     boolean empty(){
         return size == 0;
     }
-    
-    public static void main(String args[]){
-        PriorityQueue<Integer> pq = new PriorityQueue<Integer>(10, new IntegerComparator());
-        
-        pq.insert(5);
-        pq.print();
-        pq.insert(10);
-        pq.print();
-        pq.insert(4);
-        pq.print();
-        pq.insert(6);
-        pq.print();
-        System.out.println(pq.getMax());
-        pq.print();
-        pq.insert(12);
-        pq.print();
-        System.out.println(pq.getMax());
-        pq.print();
-        System.out.println(pq.getMax());
-        pq.print();
+	
+	int size(){
+		
+		return size;
+		
+	}
+	
+	public T getMax() {
+        // Ensure not empty
+        if (size == 0) throw new IllegalStateException();
+        // Keep a reference to the root object
+        T object = heap[1];
+        return object;
     }
+	
+	private T[] resize(ref T[] heap, int size){
+		
+		newSize = size * 2;
+		
+		T[] newHeap =(T []) new Object[newSize];
+		
+		System.arraycopy(heap, 0, tmp, 0, arr.length)
+		
+		return newHeap;
+	} 
 }
